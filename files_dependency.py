@@ -15,4 +15,3 @@ if __name__ == "__main__":
 	nx.draw_networkx_labels(G, pos, font_size=8, font_family='sans-serif')
 
 	plt.show()
-	plt.savefig("filename.png")
