@@ -1,1 +1,2 @@
-# ZAD_1
+# Historyjka_1
+![](doc/graph.png)
