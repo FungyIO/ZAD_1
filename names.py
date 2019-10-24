@@ -1,11 +1,18 @@
 import os
 
+class file:
+    def __init__(self, filename, filesize):
+        self.filename = filename
+        self.filesize = filesize
+
 def GetCurrentDirectoryFilenames():
 
-    filenames = []
+    files = []
+
     for root, dirs, files in os.walk("."):
         for filename in files:
             if filename[-3:] == '.py':
-                filenames.append(filename)
+                files.append(file(filename, os.path.getsize(filename)))
 
-    return filenames
+    return files
+
