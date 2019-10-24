@@ -2,7 +2,7 @@ import os
 import re
 
 
-def parse_function(name):
+def parse_function(name, files):
     names = []
     names_splitted = []
 
