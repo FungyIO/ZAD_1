@@ -12,11 +12,11 @@ def parse_function(name, files):
                 re.sub('\s+', ' ', x).strip()  # Handling extra space's in line
                 if x.startswith("import"):
                     names.append(x)
-        for x in names:
 
+        for x in names:
             words = x.split()  # Dividing line into words(creating a list o words)
             if words[1]+".py" in files:
-                names_splitted.append(words[1])  # adding only file name to main list
+                names_splitted.append(words[1]+".py")  # adding only file name to main list
 
         return names_splitted
     else:
