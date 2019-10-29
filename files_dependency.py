@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 if __name__ == "__main__":
 
 	filenames = names.GetCurrentDirectoryFilenames()
-
 	G = prepare_data_to_graph.prepare_data_to_graph(filenames)
 
 	pos = nx.spring_layout(G)

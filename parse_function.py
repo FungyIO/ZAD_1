@@ -15,8 +15,11 @@ def parse_function(name, files):
 
         for x in names:
             words = x.split()  # Dividing line into words(creating a list o words)
-            if words[1]+".py" in files:
-                names_splitted.append(words[1]+".py")  # adding only file name to main list
+
+            for (path, dirs, files) in os.walk("."):
+                for file in files:
+                    if words[1] + ".py" == file:
+                        names_splitted.append(words[1] + ".py\n" + str(os.path.getsize(file)))  # adding only file name to main list
 
         return names_splitted
     else:
