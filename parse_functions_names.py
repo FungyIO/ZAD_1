@@ -1,5 +1,6 @@
 import os
 
+
 def parse_function(filename):
     if os.path.isfile(filename):
         nodes = []

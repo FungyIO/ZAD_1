@@ -9,4 +9,3 @@ def get_current_directory_filenames():
                 filenames.append(filename)
 
     return filenames
-

@@ -24,3 +24,4 @@ def parse_function(name, files):
     else:
         print("This is not a File.")
         return []
+

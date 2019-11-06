@@ -13,3 +13,4 @@ def prepare_data_to_graph(filenames):
             nodesize = os.path.getsize(node)
             G.add_edge(edge, node + "\n" + str(nodesize))
     return G
+
