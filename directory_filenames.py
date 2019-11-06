@@ -1,6 +1,6 @@
 import os
 
-def GetCurrentDirectoryFilenames():
+def get_current_directory_filenames():
     filenames = []
 
     for root, dirs, files in os.walk("."):

@@ -1,11 +1,12 @@
-import names
+import directory_filenames
 import prepare_data_to_graph
 import networkx as nx
 import matplotlib.pyplot as plt
 
+
 if __name__ == "__main__":
 
-	filenames = names.GetCurrentDirectoryFilenames()
+	filenames = directory_filenames.get_current_directory_filenames()
 	G = prepare_data_to_graph.prepare_data_to_graph(filenames)
 
 	pos = nx.spring_layout(G)
