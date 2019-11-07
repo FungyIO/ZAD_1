@@ -5,7 +5,7 @@ import re
 def parse_function(name, tab):
     names = []
     names_splitted = []
-    fc_list = []
+
     function_list = []
     actual_name = []
 
@@ -30,7 +30,7 @@ def parse_function(name, tab):
                             counter = counter + 1
                     if counter > 0:
                         tup1 = (actual_name[0], x, counter)
-                        # fc_list.append(tup1)
+
                         function_list.append(tup1)
 
         return function_list
