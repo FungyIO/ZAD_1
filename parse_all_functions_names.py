@@ -7,6 +7,8 @@ def parse_function():
     nodes = []
 
     for file in files:
-        nodes.append(parse_functions_names.parse_function(file))
+        nodes_from_file = parse_functions_names.parse_function(file)
+        for node in nodes_from_file:
+            nodes.append(node)
 
     return nodes
