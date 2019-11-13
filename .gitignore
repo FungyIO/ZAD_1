@@ -104,3 +104,9 @@ venv.bak/
 .mypy_cache/
 
 .idea/
+
+# other
+hello.gv
+hello.gv.pdf
+unix.gv
+unix.gv.pdf
