@@ -2,43 +2,58 @@ import os
 import re
 
 
-def parse_function(name, tab):
-    names = []
-    names_splitted = []
+def parse_function(filename, tab_of_all_functions):
+    names_of_function_in_file_splitted = []
+    if os.path.isfile(filename):
+        names_of_function_in_file = open_clear_find(filename, 'def')
 
-    function_list = []
-    actual_name = []
+        for name in names_of_function_in_file:
+            words = name.split()
+            function_name = words[1].split("(")[0]
+            names_of_function_in_file_splitted.append(function_name)
 
-    if os.path.isfile(name):
-        with open(name) as file:  # there is no need to close the file. "with" statement do this by itself
-            for x in file:
-                re.sub('\s+', ' ', x).strip()  # Handling extra space's in line
-                if x.startswith("def"):
-                    names.append(x)
+        list_of_dependencies = []
+        for x in tab_of_all_functions:
+            i = 0
+            counter = [0] * len(names_of_function_in_file_splitted)
+            with open(filename) as file:
+                if (x + "(") not in file.read():
+                    continue
+                file.seek(0)
+                is_line_of_function = False
 
-            for x in names:
-                words = x.split()  # Dividing line into words(creating a list o words)
-                names_splitted.append(words[1].strip())  # adding only file name to main list
-                actual_name = names_splitted[0].split("(")
+                for line in file:
+                    if line is '\n':  # skips blank lines
+                        continue
+                    if 'def' + ' ' not in line:
+                        if is_line_of_function:
+                            if not line.startswith(' ') and not line.startswith('\t'):  # function body must start with ' ' or '\t'
+                                is_line_of_function = False
+                                continue
+                            counter[i] += line.count(x + "(")
+                    else:
+                        if is_line_of_function is True:
+                            i += 1
+                        else:
+                            is_line_of_function = True
 
-        for x in tab:
-            if len(actual_name) and x != actual_name[0]:
-                counter = 0
-                with open(name) as file:
-                    for b in file:
-                        if x + "(" in b:
-                            counter = counter + 1
-                    if counter > 0:
-                        tup1 = (actual_name[0], x, counter)
+            for actual_function, actual_counter in zip(names_of_function_in_file_splitted, counter):
+                if actual_counter != 0:
+                    list_of_dependencies.append((actual_function, x, actual_counter))
 
-                        function_list.append(tup1)
-
-        return function_list
+        return list_of_dependencies
 
     else:
         print("This is not a File.")
         return []
 
 
+def open_clear_find(name, word):
+    names = []
 
-
+    with open(name) as file:
+        for x in file:
+            re.sub('\s+', ' ', x).strip()
+            if x.startswith(word):
+                names.append(x)
+    return names
