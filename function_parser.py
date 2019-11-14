@@ -2,7 +2,7 @@ import os
 import re
 
 
-def parse_function(filename, tab_of_all_functions):
+def parse_function_2(filename, tab_of_all_functions):
     names_of_function_in_file_splitted = []
     if os.path.isfile(filename):
         names_of_function_in_file = open_clear_find(filename, 'def')
