@@ -9,7 +9,7 @@ def functions_dependency():
     file_names = directory_filenames.get_current_directory_filenames()
     function_connections = []
     for f_name in file_names:
-        function_connections += function_parser.parse_function(f_name, functions_list)
+        function_connections += function_parser.parse_function_2(f_name, functions_list)
 
     g = Digraph('unix', filename='unix.gv',
                 node_attr={'color': 'aquamarine1', 'style': 'filled'})
