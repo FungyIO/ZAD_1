@@ -20,7 +20,7 @@ def from_file(filename):
         return nodes
     else:
         print("There is no such File.")
-        return
+        return []
 
 
 def from_directory():
