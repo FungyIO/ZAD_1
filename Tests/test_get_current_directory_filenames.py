@@ -1,6 +1,7 @@
 from unittest import TestCase
 import os
 import sys
+# Allows import files from parent folder
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
 import directory_filenames
 
