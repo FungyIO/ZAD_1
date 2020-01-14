@@ -3,7 +3,9 @@ import directory_filenames
 import function_parser
 from graphviz import Digraph
 import os
+import functions_cc
 os.environ["PATH"] += os.pathsep + 'C:/Users/Lenovo/AppData/Local/graphviz-2.38/release/bin'
+
 
 def functions_dependency():
     functions_list = parse_functions_names.from_directory()
@@ -16,10 +18,13 @@ def functions_dependency():
                 node_attr={'color': 'aquamarine1', 'style': 'filled'})
     g.attr(size='6,6')
 
+    f_cc = functions_cc.get_all_functions_cc()
+    f_cc_dict = dict(f_cc)
+    print(f_cc_dict)
+
     for edge in function_connections:
-        print(len(edge))
-        print(edge)
-        g.edge(str(edge[1]), str(edge[0]), label=str(edge[2]))
+        g.edge(str(edge[1]) + '\n' + 'cc - ' + f_cc_dict[edge[1]],
+               str(edge[0] + '\n' + 'cc - ' + f_cc_dict[edge[0]]), label=str(edge[2]))
 
     g.view()
 
