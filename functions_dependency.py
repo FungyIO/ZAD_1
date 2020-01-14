@@ -2,7 +2,8 @@ import parse_functions_names
 import directory_filenames
 import function_parser
 from graphviz import Digraph
-
+import os
+os.environ["PATH"] += os.pathsep + 'C:/Users/Lenovo/AppData/Local/graphviz-2.38/release/bin'
 
 def functions_dependency():
     functions_list = parse_functions_names.from_directory()
