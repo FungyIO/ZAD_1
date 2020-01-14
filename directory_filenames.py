@@ -11,5 +11,3 @@ def get_current_directory_filenames(dir=""):
 
     return filenames
 
-
-# lubie jacka

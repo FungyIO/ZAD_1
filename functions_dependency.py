@@ -5,6 +5,8 @@ from graphviz import Digraph
 import os
 import functions_cc
 os.environ["PATH"] += os.pathsep + 'C:/Users/Lenovo/AppData/Local/graphviz-2.38/release/bin'
+# C:\Users\Lenovo\AppData\Local\Programs\Python\Python37-32\Lib\site-packages\radon
+# C:/Users/Lenovo/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/radon
 
 
 def functions_dependency():
