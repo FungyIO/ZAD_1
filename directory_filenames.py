@@ -10,3 +10,6 @@ def get_current_directory_filenames(dir=""):
                 filenames.append(filename)
 
     return filenames
+
+
+# lubie jacka

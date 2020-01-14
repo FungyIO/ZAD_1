@@ -12,13 +12,13 @@ digraph his_3 {
 	"parse_filenames.py" -> "prepare_data_to_graph.py" [label=1]
 	node [color=khaki shape=ellipse]
 	edge [style=dashed]
-	get_current_directory_filenames -> "directory_filenames.py"
-	files_dependency -> "files_dependency.py"
-	functions_dependency -> "functions_dependency.py"
 	parse_function -> "parse_filenames.py"
 	parse_function_2 -> "function_parser.py"
-	from_directory -> "parse_functions_names.py"
-	from_file -> "parse_functions_names.py"
+	functions_dependency -> "functions_dependency.py"
+	files_dependency -> "files_dependency.py"
 	module_dependency -> "module_dependency.py"
 	prepare_data_to_graph -> "prepare_data_to_graph.py"
+	from_directory -> "parse_functions_names.py"
+	from_file -> "parse_functions_names.py"
+	get_current_directory_filenames -> "directory_filenames.py"
 }
