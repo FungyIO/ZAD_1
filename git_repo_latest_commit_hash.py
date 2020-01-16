@@ -1,6 +1,5 @@
 from git import Repo
 
-
 # w argumencie podajemy ścieżkę do folderu, gdzie znajduje się repozytorium
 def get_git_commit_hash(directory_path):
     repo_path = directory_path
