@@ -14,10 +14,10 @@ def parse_function_2(filename, tab_of_all_functions):
 
         list_of_dependencies = []
         for x in tab_of_all_functions:
-            i = 0
+            index = 0
             counter = [0] * len(names_of_function_in_file_splitted)
             with open(filename) as file:
-                if (x + "(") not in file.read():
+                if (x + "(") not in file.read():  
                     continue
                 file.seek(0)
                 is_line_of_function = False
@@ -30,10 +30,10 @@ def parse_function_2(filename, tab_of_all_functions):
                             if not line.startswith(' ') and not line.startswith('\t'):  # function body must start with ' ' or '\t'
                                 is_line_of_function = False
                                 continue
-                            counter[i] += line.count(x + "(")
+                            counter[index] += line.count(x + "(")
                     else:
                         if is_line_of_function is True:
-                            i += 1
+                            index += 1
                         else:
                             is_line_of_function = True
 
