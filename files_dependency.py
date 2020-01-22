@@ -8,7 +8,11 @@ os.environ["PATH"] += os.pathsep + 'C:/Users/Lenovo/AppData/Local/graphviz-2.38/
 def files_dependency(path='.'):
 	filenames = directory_filenames.get_current_directory_filenames(path)
 
-	G = prepare_data_to_graph.prepare_data_to_graph(filenames, path)
+	if len(sys.argv) >= 3:
+		max_num_of_nodes = int(sys.argv[2])
+	else:
+		max_num_of_nodes = 60
+	G = prepare_data_to_graph.prepare_data_to_graph(filenames, path, max_num_of_nodes)
 	G.view()
 
 

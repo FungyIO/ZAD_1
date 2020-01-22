@@ -38,14 +38,27 @@ def module_dependency(path='.'):
     g = Digraph('his_3', filename='his_3.gv',
                 node_attr={'color': 'chocolate1', 'style': 'filled', 'shape': 'tab'})
 
+    if len(sys.argv) >= 3:
+        max_num_of_nodes = int(sys.argv[2])
+    else:
+        max_num_of_nodes = 60
+
     for edge, counter in module_connections.items():
         g.edge(str(edge[0]), str(edge[1]), label=str(counter))
+
+        max_num_of_nodes -= 1
+        if max_num_of_nodes < 0:
+            break
 
     g.attr('node', shape='ellipse', color='khaki')
     g.attr('edge', style='dashed', )
 
     for fun_to_module_connection in fun_to_module_connections_set:
         g.edge(fun_to_module_connection[0], fun_to_module_connection[1])
+
+        max_num_of_nodes -= 1
+        if max_num_of_nodes < 0:
+            break
 
     g.view()
 
