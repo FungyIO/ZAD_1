@@ -19,26 +19,25 @@ def functions_dependency(path='.'):
                 node_attr={'color': 'aquamarine1', 'style': 'filled'})
     g.attr(size='6,6')
 
-    f_cc = functions_cc.get_all_functions_cc()
-    f_cc_dict = dict(f_cc)
-    # print(f_cc_dict)
-
     if len(sys.argv) >= 3:
         max_num_of_nodes = int(sys.argv[2])
     else:
         max_num_of_nodes = 60
 
+    f_cc = functions_cc.get_all_functions_cc(path, max_num_of_nodes)
+    f_cc_dict = dict(f_cc)
+    # print(f_cc_dict)
+
     for edge in function_connections:
         if edge[1] in f_cc_dict:
             g.edge(str(edge[1]) + '\n' + 'cc - ' + f_cc_dict[edge[1]],
                    str(edge[0] + '\n' + 'cc - ' + f_cc_dict[edge[0]]), label=str(edge[2]))
+        else:
+            g.edge(str(edge[1]), str(edge[0]), label=str(edge[2]))
 
         max_num_of_nodes -= 1
         if max_num_of_nodes < 0:
             break
-
-        else:
-            g.edge(str(edge[1]), str(edge[0]), label=str(edge[2]))
 
     g.view()
 
