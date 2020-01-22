@@ -19,12 +19,12 @@ def from_file(filename):
 
         return nodes
     else:
-        print("There is no such File.")
+        # print("There is no such File.")
         return []
 
 
-def from_directory():
-    files = directory_filenames.get_current_directory_filenames()
+def from_directory(path='.'):
+    files = directory_filenames.get_current_directory_filenames(path)
     nodes = []
 
     for file in files:

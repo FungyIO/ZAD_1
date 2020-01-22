@@ -2,7 +2,7 @@ import os
 import re
 
 
-def parse_function(name, files):
+def parse_function(name, files, path):
     names = []
     names_splitted = []
 
@@ -15,13 +15,14 @@ def parse_function(name, files):
 
         for x in names:
             words = x.split()  # Dividing line into words(creating a list o words)
-
-            if words[1] + ".py" in files:
-                filesize = os.path.getsize(words[1] + ".py")
+            if path + '/' + words[1] + ".py" in files:
+                filesize = 'unknown'
+                if os.path.isfile(words[1] + '.py'):
+                    filesize = os.path.getsize(words[1] + ".py")
                 names_splitted.append(words[1] + ".py\n" + str(filesize))
 
         return names_splitted
     else:
-        print("This is not a File.")
+        # print("This is not a File.")
         return []
 

@@ -3,12 +3,15 @@ import directory_filenames
 import function_parser
 from graphviz import Digraph
 import os
+import sys
 os.environ["PATH"] += os.pathsep + 'C:/Users/Lenovo/AppData/Local/graphviz-2.38/release/bin'
 
 
-def module_dependency():
-    functions_list = parse_functions_names.from_directory()
-    file_names = directory_filenames.get_current_directory_filenames()
+def module_dependency(path='.'):
+    functions_list = parse_functions_names.from_directory(path)
+    # print(functions_list)
+    file_names = directory_filenames.get_current_directory_filenames(path)
+    # print(file_names)
     functions_in_file = {}   # dict [ filename : tab_of_functions_in_this_file ]
 
     for file_name in file_names:
@@ -48,4 +51,4 @@ def module_dependency():
 
 
 if __name__ == '__main__':
-    module_dependency()
+    module_dependency(sys.argv[1])

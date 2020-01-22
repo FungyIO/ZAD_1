@@ -4,16 +4,16 @@ from graphviz import Digraph
 import os
 
  
-def prepare_data_to_graph(filenames):
+def prepare_data_to_graph(filenames, path='.'):
     G = Digraph('unix', filename='unix.gv',
                 node_attr={'color': 'lightblue2', 'style': 'filled'})
     G.attr(size='6,6')
- 
+
     for node in filenames:
-        edges = parse_filenames.parse_function(node, filenames)
+        edges = parse_filenames.parse_function(node, filenames, path)
 
         for edge in edges:
             node_size = os.path.getsize(node)
-            G.edge(edge, node + "\n" + str(node_size))
+            G.edge(edge, node.split('/')[-1] + "\n" + str(node_size))
     return G
 
