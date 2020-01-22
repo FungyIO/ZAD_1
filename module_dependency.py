@@ -4,6 +4,9 @@ import function_parser
 from graphviz import Digraph
 import os
 import sys
+
+from git_repo_latest_commit_hash import get_git_commit_hash
+
 os.environ["PATH"] += os.pathsep + 'C:/Users/Lenovo/AppData/Local/graphviz-2.38/release/bin'
 
 
@@ -49,6 +52,11 @@ def module_dependency(path='.'):
         max_num_of_nodes -= 1
         if max_num_of_nodes < 0:
             break
+
+    # dodawanie hashu commita do grafu
+    commit_hash = get_git_commit_hash(path)
+    g.attr(label='Lastest commit hash: ' + commit_hash)
+    g.attr(fontsize='20')
 
     g.attr('node', shape='ellipse', color='khaki')
     g.attr('edge', style='dashed', )

@@ -5,6 +5,8 @@ from graphviz import Digraph
 import os
 import sys
 import functions_cc
+from git_repo_latest_commit_hash import get_git_commit_hash
+
 os.environ["PATH"] += os.pathsep + 'C:/Users/Lenovo/AppData/Local/graphviz-2.38/release/bin'
 
 
@@ -18,6 +20,11 @@ def functions_dependency(path='.'):
     g = Digraph('unix', filename='unix.gv',
                 node_attr={'color': 'aquamarine1', 'style': 'filled'})
     g.attr(size='6,6')
+
+    # dodawanie hashu commita do grafu
+    commit_hash = get_git_commit_hash(path)
+    g.attr(label='Lastest commit hash: ' + commit_hash)
+    g.attr(fontsize='20')
 
     if len(sys.argv) >= 3:
         max_num_of_nodes = int(sys.argv[2])

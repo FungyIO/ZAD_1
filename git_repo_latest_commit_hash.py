@@ -1,7 +1,9 @@
+import sys
+
 from git import Repo
 
 # w argumencie podajemy ścieżkę do folderu, gdzie znajduje się repozytorium
-def get_git_commit_hash(directory_path):
+def get_git_commit_hash(directory_path="."):
     repo_path = directory_path
 
     try:
@@ -24,6 +26,5 @@ def get_git_commit_hash(directory_path):
         return commit_hash
 
 
-# main tylko w celu sprawdzenia działania funkcji, potem trzeba go usunąć
 if __name__ == "__main__":
-    get_git_commit_hash(".")
+    get_git_commit_hash(sys.argv[1])
