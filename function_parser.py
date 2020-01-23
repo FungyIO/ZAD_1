@@ -30,7 +30,8 @@ def parse_function_2(filename, tab_of_all_functions):
                             if not line.startswith(' ') and not line.startswith('\t'):  # function body must start with ' ' or '\t'
                                 is_line_of_function = False
                                 continue
-                            counter[index] += line.count(x + "(")
+                            if len(counter) > index:
+                                counter[index] += line.count(x + "(")
                     else:
                         if is_line_of_function is True:
                             index += 1
@@ -44,7 +45,7 @@ def parse_function_2(filename, tab_of_all_functions):
         return list_of_dependencies
 
     else:
-        print("This is not a File.")
+        # print("This is not a File.")
         return []
 
 

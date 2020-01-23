@@ -1,24 +1,31 @@
 digraph his_3 {
 	node [color=chocolate1 shape=tab style=filled]
-	"directory_filenames.py" -> "files_dependency.py" [label=1]
-	"prepare_data_to_graph.py" -> "files_dependency.py" [label=1]
-	"directory_filenames.py" -> "functions_dependency.py" [label=1]
-	"function_parser.py" -> "functions_dependency.py" [label=1]
-	"parse_functions_names.py" -> "functions_dependency.py" [label=1]
-	"directory_filenames.py" -> "module_dependency.py" [label=1]
-	"function_parser.py" -> "module_dependency.py" [label=1]
-	"parse_functions_names.py" -> "module_dependency.py" [label=2]
-	"directory_filenames.py" -> "parse_functions_names.py" [label=1]
-	"parse_filenames.py" -> "prepare_data_to_graph.py" [label=1]
+	label="Lastest commit hash: 82adc007be597a72f4f0c92b50360bb349b9a542"
+	fontsize=20
+	"./directory_filenames.py" -> "./files_dependency.py" [label=1]
+	"./prepare_data_to_graph.py" -> "./files_dependency.py" [label=1]
+	"./directory_filenames.py" -> "./functions_cc.py" [label=1]
+	"./directory_filenames.py" -> "./functions_dependency.py" [label=1]
+	"./functions_cc.py" -> "./functions_dependency.py" [label=1]
+	"./function_parser.py" -> "./functions_dependency.py" [label=1]
+	"./parse_functions_names.py" -> "./functions_dependency.py" [label=1]
+	"./directory_filenames.py" -> "./module_dependency.py" [label=1]
+	"./function_parser.py" -> "./module_dependency.py" [label=1]
+	"./git_repo_latest_commit_hash.py" -> "./module_dependency.py" [label=1]
+	"./parse_functions_names.py" -> "./module_dependency.py" [label=2]
+	"./directory_filenames.py" -> "./parse_functions_names.py" [label=1]
+	"./parse_filenames.py" -> "./prepare_data_to_graph.py" [label=1]
 	node [color=khaki shape=ellipse]
 	edge [style=dashed]
-	parse_function -> "parse_filenames.py"
-	parse_function_2 -> "function_parser.py"
-	functions_dependency -> "functions_dependency.py"
-	files_dependency -> "files_dependency.py"
-	module_dependency -> "module_dependency.py"
-	prepare_data_to_graph -> "prepare_data_to_graph.py"
-	from_directory -> "parse_functions_names.py"
-	from_file -> "parse_functions_names.py"
-	get_current_directory_filenames -> "directory_filenames.py"
+	files_dependency -> "./files_dependency.py"
+	module_dependency -> "./module_dependency.py"
+	get_git_commit_hash -> "./git_repo_latest_commit_hash.py"
+	parse_function -> "./parse_filenames.py"
+	prepare_data_to_graph -> "./prepare_data_to_graph.py"
+	get_all_functions_cc -> "./functions_cc.py"
+	functions_dependency -> "./functions_dependency.py"
+	from_file -> "./parse_functions_names.py"
+	parse_function_2 -> "./function_parser.py"
+	from_directory -> "./parse_functions_names.py"
+	get_current_directory_filenames -> "./directory_filenames.py"
 }
