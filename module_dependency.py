@@ -2,6 +2,7 @@ import parse_functions_names
 import directory_filenames
 import function_parser
 from graphviz import Digraph
+import functions_cc
 import os
 import sys
 
@@ -61,8 +62,13 @@ def module_dependency(path='.'):
     g.attr('node', shape='ellipse', color='khaki')
     g.attr('edge', style='dashed', )
 
+    f_cc = dict(functions_cc.get_all_functions_cc(path))
+
     for fun_to_module_connection in fun_to_module_connections_set:
-        g.edge(fun_to_module_connection[0], fun_to_module_connection[1])
+        if fun_to_module_connection[0] in f_cc:
+            g.edge(fun_to_module_connection[0] + '\n cc ' + f_cc[fun_to_module_connection[0]], fun_to_module_connection[1])
+        else:
+            g.edge(fun_to_module_connection[0], fun_to_module_connection[1])
 
         max_num_of_nodes -= 1
         if max_num_of_nodes < 0:
